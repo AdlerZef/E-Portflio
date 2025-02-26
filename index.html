@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: #f8f8f8;
+            text-align: center;
+            padding: 0;
+        }
+        .header {
+            background: linear-gradient(135deg, #B5828C, #FFCDB2);
+            color: white;
+            padding: 150px 20px;
+        }
+        .header h1 {
+            font-size: 4.5em;
+        }
+        .header p {
+            margin-top: 15px;
+            font-size: 1.8em;
+            opacity: 0.9;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 60px auto;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+        }
+        .slide img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        
+        .author-intro {
+            background: #B5828C;
+            color: white;
+            padding: 150px 20px;
+            margin-top: 20px;
+        }
+        .author-intro h2 {
+            font-size: 4em;
+        }
+        .author-intro p {
+            max-width: 900px;
+            margin: 30px auto;
+            font-size: 1.8em;
+        }
+        .intro {
+            max-width: 800px;
+            margin: 50px auto;
+            font-size: 1.2em;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 800px;
+            margin: auto;
+            padding: 50px 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .visible {
+            opacity: 1;
+        }
+        .footer {
+            background: #7C444F;
+            color: white;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let slideIndex = 0;
+            function showSlides() {
+                let slides = document.querySelectorAll(".slide");
+                slides.forEach(slide => slide.style.display = "none");
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1; }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 3000);
+            }
+            showSlides();
+
+            window.addEventListener("scroll", function() {
+                const gallery = document.querySelector(".gallery");
+                const position = gallery.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (position < windowHeight - 100) {
+                    gallery.classList.add("visible");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>WELCOME!</h1>
+        <p>Laguna State Polytechnic University</p>
+    </div>
+    
+    <div class="slideshow-container">
+        <div class="slide"><img src="gate.jpg" alt="Slide 1"></div>
+        <div class="slide"><img src="shs.jpg" alt="Slide 2"></div>
+    </div>
+    <div class="author-intro">
+        <h2>Vision</h2>
+        <p>LSPU is a center of technological innovation that promotes interdisciplinary learning, 
+            sustainable utilization of resources, collaboration and partnership with the community and stakeholders.</p>
+        <h2>Mission</h2>
+        <p>LSPU, driven by progressive leadership, is a premier institution providing technology-mediated agriculture, fisheries, 
+            and other related and emerging disciplines significantly contributing to the growth and development of the region and nation.</p>
+    </div>
+    <div class="intro">
+        <h2>STRAND</h2>
+        <p>Information and Communications Technology (ICT)
+            Focuses on computer programming, web development, and network administration, preparing students for careers in the tech industry.</p>
+        </div>
+            <div class="intro">
+            <p>Humanities and Social Sciences (HUMSS)
+                Emphasizes critical thinking, research skills, and understanding human behavior, ideal for fields like law, journalism, and education.</p>
+            </div>
+            <div class="intro">
+                <p>Accountancy, Business, and Management (ABM)
+                    This strand focuses on developing students' understanding of business principles, financial management, and entrepreneurial skills.</p>
+                </div>
+                    <div class="intro">
+                    <p>Agri-Fishery Arts (AFA)
+                        Offers training in agriculture and fisheries, preparing students for careers in farming, aquaculture, and related fields.</p>
+                    </div>
+    <div class="gallery">
+        <img src="ict.jpg" alt="Project 1">
+        <img src="abm (2).jpg" alt="Project 2">
+        <img src="humss.jpg" alt="Project 3">
+        <img src="afa.jpg" alt="Project 4">
+    </div>
+    <div class="footer">
+    </div>
+</body>
+</html>
